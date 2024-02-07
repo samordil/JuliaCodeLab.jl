@@ -1,0 +1,13 @@
+name = "JuliaCodeLab"
+uuid = "c06d3ca1-c1d7-44cf-afe0-4fad50783559"
+authors = ["Samuel Odoyo"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
