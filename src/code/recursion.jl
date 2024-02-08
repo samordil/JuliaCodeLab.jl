@@ -30,3 +30,42 @@ function cumulsum(x::AbstractArray)
     end
     return total
 end
+
+"""
+    ispalindrome(word)
+
+Check if the given word is a palindrome.
+
+A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward.
+
+# Arguments
+- `word::AbstractString`: The word to check for palindrome.
+
+# Returns
+- `true` if the word is a palindrome, `false` otherwise.
+
+# Examples
+```julia
+julia> ispalindrome("radar")
+true
+
+julia> ispalindrome("hello")
+false
+```
+"""
+function ispalindrome(word::AbstractString)::Bool
+    len::Int = length(word)
+
+    if len <= 1
+        return true
+    elseif word[1] == word[end]
+        return ispalindrome(word[2:end-1])
+    else
+        return false
+    end
+end
+
+# Alternative code
+# function ispalindrome(word::AbstractString)::Bool
+#     return word == reverse(word)
+# end
