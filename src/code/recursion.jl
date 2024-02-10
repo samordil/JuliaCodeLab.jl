@@ -36,7 +36,9 @@ end
 
 Check if the given word is a palindrome.
 
-A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward.
+A palindrome is a word, phrase, number, or other 
+sequence of characters that reads the same forward 
+and backward.
 
 # Arguments
 - `word::AbstractString`: The word to check for palindrome.
@@ -69,3 +71,69 @@ end
 # function ispalindrome(word::AbstractString)::Bool
 #     return word == reverse(word)
 # end
+
+"""
+
+"""
+mutable struct Mytime 
+	hour::Int
+	minute::Int
+	second::Int
+end
+
+"""
+    update_time!(time::Mytime, seconds::Int)
+
+Increment a Mytime object by the specified number of seconds.
+
+This function modifies the input Mytime object `time` by 
+adding the specified number of seconds.
+
+# Arguments
+- `time::Mytime`: The Mytime object to be incremented.
+- `seconds::Int`: The number of seconds to add to the Mytime object.
+
+# Returns
+- The modified Mytime object after the increment operation.
+
+# Examples
+```julia
+julia> time = Mytime(10, 30, 45)
+Mytime(10, 30, 45)
+
+julia> update_time!(time, 30)
+Mytime(10, 31, 15)
+
+julia> update_time!(time, 200)
+Mytime(10, 34, 35)
+```
+"""
+function update_time!(time::Mytime, seconds::Int)
+    time.second += seconds
+
+    if time.second >= 60
+        time.second -= 60
+        time.minute += 1
+        update_time!(time, 0)
+    end
+
+    if time.minute >= 60
+        time.minute -= 60
+        time.hour += 1
+        update_time!(time, 0)
+    end
+
+    # @printf "%02d:%02d:%02d\n" time.hour time.minute time.second
+
+     #### Using while loop
+     
+    # while time.second >= 60
+    # 	time.second -= 60
+    # 	time.minute += 1		
+    # end
+    
+    # while time.minute >= 60
+    # 		time.minute -= 60
+    # 		time.hour += 1
+    # end
+end
